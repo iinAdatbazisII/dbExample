@@ -56,3 +56,9 @@ INSERT INTO drinks ( drink, amount, type_id, package_id ) VALUES
 ( "Kövidinka", 3, 2, 3 );
 
 php artisan make:migration create_drinks_table
+
+php artisan migrate
+
+php artisan db:seed
+
+php artisan make:seeder DrinkSeeder
