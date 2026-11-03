@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class DrinkSeeder extends Seeder
 {
@@ -12,6 +13,8 @@ class DrinkSeeder extends Seeder
      */
     public function run(): void
     {
-        $sql = file_get_contents(__DIR__, "/pub_adatok.sql");
+        $sql = file_get_contents(__DIR__ . "/pub_adatok.sql");
+
+        DB::unprepared($sql);
     }
 }
