@@ -26,11 +26,16 @@ class DrinkController extends Controller
     }
 
     public function getDrinkById(){
+
+        // $drink = DB::table('drinks')
+        // ->where('id', 2)
+        // ->firstOrFail();
+
         $drink = DB::table('drinks')
-        ->where('id', 3)
-        ->first();
+        ->find(2);
 
         //json response, asszociativ tombben kulcs ertekpar
         return response()->json(['drink' => $drink ]);
     }
+    
 }
