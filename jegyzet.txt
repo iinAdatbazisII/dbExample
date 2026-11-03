@@ -62,3 +62,14 @@ php artisan migrate
 php artisan db:seed
 
 php artisan make:seeder DrinkSeeder
+
+php artisan db:seed --class=DrinkSeeder
+
+php artisan migrate:fresh
+
+tomb felsorolva
+asszociativ tomb adatok szotarszerkezetben ( kulcs-ertekpar )
+
+php artisan db:seed
+
+php artisan make:controller api/DrinkController
