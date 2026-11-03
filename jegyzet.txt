@@ -1,0 +1,58 @@
+php artisan install:api
+
+kontrollerbol kozvetlen eleri az adatbazist: querybuilder
+
+.env
+DB_CONNECTION=mysql
+DB_HOST=172.16.16.148
+DB_PORT=3306
+DB_DATABASE=dbpractice
+DB_USERNAME=dora
+DB_PASSWORD=boglarka
+
+db:
+
+DROP DATABASE IF EXISTS dora_pub;
+CREATE DATABASE dora_pub;
+USE dora_pub;
+
+CREATE TABLE types(
+	id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	type VARCHAR(20)
+);
+
+CREATE TABLE packages(
+	id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	package VARCHAR(20)
+);
+
+CREATE TABLE drinks(
+	id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	drink VARCHAR(20),
+	amount INTEGER,
+	type_id INTEGER,
+	package_id INTEGER,
+	FOREIGN KEY ( type_id ) REFERENCES types( id ),
+	FOREIGN KEY ( package_id ) REFERENCES packages( id )
+);
+
+INSERT INTO types (type) VALUES
+( "Sörök" ),
+( "Borok" ),
+( "Rövid" ),
+( "Üdítő" );
+
+INSERT INTO packages (package) VALUES
+( "Üveges" ),
+( "Dobozos" ),
+( "Hordós" ),
+( "Kimért" );
+
+INSERT INTO drinks ( drink, amount, type_id, package_id ) VALUES
+( "Egri bikavér", 25, 2, 1 ),
+( "Dab", 135, 1, 2 ),
+( "Szilva pálinka", 30, 3, 4 ),
+( "Fanta", 125, 4, 2 ),
+( "Kövidinka", 3, 2, 3 );
+
+php artisan make:migration create_drinks_table
