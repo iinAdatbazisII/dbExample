@@ -9,3 +9,5 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 Route::get('/drinks', [DrinkController::class, 'getDrinks']);
+Route::get('/drink-names', [DrinkController::class, 'getDrinkNames']);
+Route::get('/drink-by-id', [DrinkController::class, 'getDrinkById']);
